@@ -3,7 +3,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-image: url("BeachBackgroundLogin.jpg"); /* Beach background*/
     background-size: cover; /* Scale image to cover entire screen */
     background-position: center; /* Center the image so the main focal point is visible */
     background-repeat: no-repreat; /* Prevent the image from tiling (repeating) */
@@ -114,4 +113,22 @@ button {
     background-color: #66C2E8; /* Solid light blue background */
     border: none;
     color: white;
+}
+
+/* Specific Background for Login Page */
+.page-login {
+    background-image: url("BeachBackgroundLogin.jpg"); /* Check this filename! */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Specific Background for Register Page */
+.page-register {
+    background-image: url("Ocean2.png"); /* CHANGE THIS to your actual image name */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
