@@ -1,4 +1,6 @@
 <?php
+// Referenced in all endpoints
+// This file includes helper functions used in the endpoints
 
 function getRequestInfo()
 {
@@ -20,10 +22,10 @@ function returnWithError($err)
 function returnWithInfo($id, $login, $firstName, $lastName)
 {
     $retValue = array(
-        'id' => $id,
-        'login' => $login,
-        'firstName' => $firstName,
-        'lastName' => $lastName,
+        'ID' => $id,
+        'Login' => $login,
+        'FirstName' => $firstName,
+        'LastName' => $lastName,
         'error' => ''
     );
     sendResultInfoAsJson($retValue);
