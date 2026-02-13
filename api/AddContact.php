@@ -8,11 +8,11 @@ UserID is a reference to the ID of the user in the Users table.
  
 Takes a Json object with these fields:
 {
-    "UserID": 0,
-    "FirstName": "" ,
-    "LastName": "" ,
-    "Email": "" ,
-    "Phone" : "" 
+    "userId": 0,
+    "firstName": "" ,
+    "lastName": "" ,
+    "email": "" ,
+    "phone" : "" 
 }
 */
 include 'db.php';
@@ -21,7 +21,7 @@ include 'response.php';
 $inData = getRequestInfo();
 
 $stmt = $conn->prepare("INSERT INTO Contacts (UserID, FirstName, LastName, Email, Phone) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("issss", $inData["UserID"], $inData["FirstName"], $inData["LastName"], $inData["Email"], $inData["Phone"]);
+$stmt->bind_param("issss", $inData["userId"], $inData["firstName"], $inData["lastName"], $inData["email"], $inData["phone"]);
 
 if ($stmt->execute()) {
     $contactId = $conn->insert_id;

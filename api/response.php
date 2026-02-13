@@ -22,10 +22,10 @@ function returnWithError($err)
 function returnWithInfo($id, $login, $firstName, $lastName)
 {
     $retValue = array(
-        'ID' => $id,
-        'Login' => $login,
-        'FirstName' => $firstName,
-        'LastName' => $lastName,
+        'id' => $id,
+        'login' => $login,
+        'firstName' => $firstName,
+        'lastName' => $lastName,
         'error' => ''
     );
     sendResultInfoAsJson($retValue);

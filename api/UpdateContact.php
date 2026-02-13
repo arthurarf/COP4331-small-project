@@ -6,12 +6,12 @@ The ID and UserID fields are needed to identify the contact, so these don't get 
 
 Takes a Json object with these fields:
 {
-    "ID": 0 ,
-    "UserID": 0 ,
-    "FirstName": "" ,
-    "LastName": "" ,
-    "Email": "" ,
-    "Phone" : "" 
+    "id": 0 ,
+    "userId": 0 ,
+    "firstName": "" ,
+    "lastName": "" ,
+    "email": "" ,
+    "phone" : "" 
 }
 */
 
@@ -21,7 +21,7 @@ include 'response.php';
 $inData = getRequestInfo();
 
 $stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Email=?, Phone=? WHERE ID=? AND UserID=?");
-$stmt->bind_param("ssssii", $inData["FirstName"], $inData["LastName"], $inData["Email"], $inData["Phone"], $inData["ID"], $inData["UserID"]);
+$stmt->bind_param("ssssii", $inData["firstName"], $inData["lastName"], $inData["email"], $inData["phone"], $inData["id"], $inData["userId"]);
 
 if ($stmt->execute() && $stmt->affected_rows > 0) {
     returnWithSuccess("Contact updated successfully");

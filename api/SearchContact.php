@@ -9,8 +9,8 @@ belong to the user.
 
 Takes a Json object with these fields:
 {
-    "UserID": 0,
-    "Search": "" // This field is optional
+    "userId": 0,
+    "search": "" // This field is optional
 }
 */
 
@@ -19,13 +19,13 @@ include 'response.php';
 
 $inData = getRequestInfo();
 
-if (isset($inData["Search"]) && !empty($inData["Search"])) {
-    $searchTerm = "%" . $inData["Search"] . "%";
+if (isset($inData["search"]) && !empty($inData["search"])) {
+    $searchTerm = "%" . $inData["search"] . "%";
     $stmt = $conn->prepare("SELECT ID, FirstName, LastName, Email, Phone, DateCreated FROM Contacts WHERE UserID=? AND (FirstName LIKE ? OR LastName LIKE ?)");
-    $stmt->bind_param("iss", $inData["UserID"], $searchTerm, $searchTerm);
+    $stmt->bind_param("iss", $inData["userId"], $searchTerm, $searchTerm);
 } else {
-    $stmt = $conn->prepare("SELECT ID, FirstName, LastName, Email, Phone FROM Contacts WHERE UserID=?");
-    $stmt->bind_param("i", $inData["UserID"]);
+    $stmt = $conn->prepare("SELECT ID, FirstName, LastName, Email, Phone, DateCreated FROM Contacts WHERE UserID=?");
+    $stmt->bind_param("i", $inData["userId"]);
 }
 
 $stmt->execute();
