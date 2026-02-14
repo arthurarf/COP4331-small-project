@@ -1,12 +1,23 @@
 <?php
 
+/*
+For deleting a contact.
+The ID field is the ID of the contact in the Contacts table.
+UserID corresponds to the ID of the user in the Users table.
+
+Takes a Json object with these fields:
+{
+    "id": 0,
+    "userId": 0
+}
+*/
 include 'db.php';
 include 'response.php';
 
 $inData = getRequestInfo();
 
 $stmt = $conn->prepare("DELETE FROM Contacts WHERE ID=? AND UserID=?");
-$stmt->bind_param("ii", $inData["contactID"], $inData["userID"]);
+$stmt->bind_param("ii", $inData["id"], $inData["userId"]);
 
 if ($stmt->execute() && $stmt->affected_rows > 0) {
     returnWithSuccess("Contact deleted successfully");

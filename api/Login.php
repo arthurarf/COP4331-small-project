@@ -1,5 +1,14 @@
 <?php
 
+/*
+For User login.
+
+Takes a Json object with these fields:
+{
+    "login": "" ,
+    "password" : "" 
+}
+*/
 include 'db.php';
 include 'response.php';
 

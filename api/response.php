@@ -1,4 +1,6 @@
 <?php
+// Referenced in all endpoints
+// This file includes helper functions used in the endpoints
 
 function getRequestInfo()
 {

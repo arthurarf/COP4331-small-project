@@ -1,5 +1,20 @@
 <?php
 
+/*
+For user registration. 
+Once registered, each user gets their own 'ID' in the
+Users table in the database.
+
+Takes a Json object with these fields:
+{
+    "firstName": "" ,
+    "lastName": "" ,
+    "login": "" ,
+    "password" : "" 
+}
+*/
+
+
 include 'db.php';
 include 'response.php';
 
