@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 /* General page styling */
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Roboto';
     background-size: cover; /* Scale image to cover entire screen */
     background-position: center; /* Center the image so the main focal point is visible */
     background-repeat: no-repreat; /* Prevent the image from tiling (repeating) */
@@ -11,6 +14,24 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+
+/* 1. Position the link container in the top-left corner */
+.top-logo {
+    position: absolute;  /* Takes it out of the normal document flow */
+    top: 20px;           /* Distance from top edge */
+    left: 20px;          /* Distance from left edge */
+    z-index: 1000;       /* Ensures it sits on top of other elements */
+    display: block;      /* Makes the link behave like a box */
+    cursor: pointer;
+}
+
+/* 2. Resize the image inside that container */
+.top-logo img {
+    width: 200px;        /* Controls the logo size - change this number to resize */
+    height: auto;        /* Keeps the sun round (aspect ratio) */
+    display: block;      /* Removes tiny gaps under images */
 }
 
 /* Container for the main content */
@@ -98,7 +119,7 @@ button {
     font-size: 1.8rem;
     border-radius: 35px; /* Very rounded corners */
     cursor: pointer;
-    font-family: sans-serif;
+    font-family: 'Roboto';
 }
 
 /* Register button specific styles */
@@ -132,106 +153,94 @@ button {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-/* General page styling */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background-image: url("BeachBackgroundLogin.jpg"); /* Beach background*/
-    background-size: cover; /* Scale image to cover entire screen */
-    background-position: center; /* Center the image so the main focal point is visible */
-    background-repeat: no-repreat; /* Prevent the image from tiling (repeating) */
-    background-attachment: fixed; /* Fix the background so it doesn't scroll wtih the content (optional) */
+
+/* --- HOME PAGE STYLES --- */
+
+/* Specific Background for Home Page */
+.page-home {
+    background-image: url("BeachBackgroundHome.jpg"); /* Reusing your beach image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* This centers the yellow box vertically and horizontally */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
 }
 
-/* Container for the main content */
-.login-container {
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    padding: 40px; /* Increased padding for better spacing inside the border */
-    
-    /* NEW: Black border and white background */
-    border: 2px solid black;
-    background-color: #F9DB9B; 
-    
-    /* Optional: Rounds the corners of the main border */
-    border-radius: 20px; 
-}
-
-/* Main heading */
-h1 {
-    font-size: 3rem;
-    margin-bottom: 30px;
-    color: black;
-}
-
-/* Error message banner styling */
-.error-banner {
-    display: none;
-    background-color: #F8D7DA; /* Pinkish-red background */
-    color: #FF0000; /* Red text */
-    padding: 15px;
-    margin-bottom: 30px;
-    font-size: 1.1rem;
-    width: 100%;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
-    border-radius: 15px;
-}
-
-/* Input fields styling */
-.input-group {
-    margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.5rem;
-    border: none;
-    background-color: #D3D3D3; /* Gray background for inputs */
-    color: #333;
-    box-sizing: border-box;
-}
-
-/* Styling the placeholder text */
-::placeholder {
-    color: #666;
-}
-
-/* Container for the buttons to sit side-by-side */
-.button-group {
+/* TOP RIGHT: Container for buttons */
+.top-nav {
+    position: absolute;
+    top: 30px;
+    right: 30px;
     display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Space between buttons */
-    margin-top: 40px;
+    gap: 15px; /* Space between the two buttons */
+    z-index: 1000;
 }
 
-/* Common button styles */
-button {
-    width: 48%; /* Each button takes up about half the space */
-    padding: 15px;
-    font-size: 1.8rem;
-    border-radius: 35px; /* Very rounded corners */
-    cursor: pointer;
-    font-family: sans-serif;
+/* Button Styling for the Top Right */
+.nav-btn {
+    text-decoration: none; /* Removes underline from links */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.2s; /* Smooth hover effect */
 }
 
-/* Register button specific styles */
-.register-btn {
-    background-color: white;
-    border: 4px solid #66C2E8; /* Thick light blue border */
-    color: black;
-}
-
-/* Login button specific styles */
-.login-btn {
-    background-color: #66C2E8; /* Solid light blue background */
-    border: none;
+/* Specific colors for the buttons */
+.btn-login {
+    background-color: #66C2E8; /* Blue */
     color: white;
+    border: 2px solid #66C2E8;
 }
+
+.btn-register {
+    background-color: white;
+    color: black;
+    border: 2px solid #66C2E8;
+}
+
+.nav-btn:hover {
+    transform: scale(1.05); /* Slightly grows when you hover */
+    cursor: pointer;
+}
+
+/* CENTER: The Sand Yellow Box */
+.home-content {
+    /*background-color: #F9DB9B;  Bright Sand/Sun Yellow */
+    background-color: rgba(249, 219, 155, 0.85);
+    width: 90%;
+    max-width: 600px;  /* Limits how wide it gets on big screens */
+    height: 400px;     /* Fixed height like your square example */
+    
+    display: flex;     /* Flexbox to center text inside the yellow box */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    
+    padding: 40px;
+    border-radius: 0px; /* Sharp corners like your example image (change to 20px if you want round) */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Optional: Adds a shadow to make it pop */
+}
+
+.home-content h1 {
+    font-size: 3.5rem;
+    color: black;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.home-content p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+

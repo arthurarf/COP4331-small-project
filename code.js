@@ -91,7 +91,7 @@ function doRegister()
 
 	if ( !isEmailValid(login) )
     {
-        resultDiv.innerHTML = "Please enter a valid email address for your Username.";
+        resultDiv.innerHTML = "Incorrect register: Make sure email address is valid";
         resultDiv.className = "error-banner";
         resultDiv.style.display = "block";
         return; // Stop the function here
