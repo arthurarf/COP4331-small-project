@@ -22,9 +22,23 @@ $inData = getRequestInfo();
 if (isset($inData["search"]) && !empty($inData["search"])) {
     $searchTerm = "%" . $inData["search"] . "%";
     $stmt = $conn->prepare("SELECT ID, FirstName, LastName, Email, Phone, DateCreated FROM Contacts WHERE UserID=? AND (FirstName LIKE ? OR LastName LIKE ?)");
+    
+    if (!$stmt) {
+        http_response_code(500);
+        returnWithError("Database error");
+        exit();
+    }
+    
     $stmt->bind_param("iss", $inData["userId"], $searchTerm, $searchTerm);
 } else {
     $stmt = $conn->prepare("SELECT ID, FirstName, LastName, Email, Phone, DateCreated FROM Contacts WHERE UserID=?");
+    
+    if (!$stmt) {
+        http_response_code(500);
+        returnWithError("Database error");
+        exit();
+    }
+    
     $stmt->bind_param("i", $inData["userId"]);
 }
 
@@ -36,6 +50,7 @@ while ($row = $result->fetch_assoc()) {
     $contacts[] = $row;
 }
 
+http_response_code(200);
 echo json_encode($contacts);
 
 $stmt->close();

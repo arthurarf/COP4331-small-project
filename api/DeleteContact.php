@@ -17,11 +17,20 @@ include 'response.php';
 $inData = getRequestInfo();
 
 $stmt = $conn->prepare("DELETE FROM Contacts WHERE ID=? AND UserID=?");
+
+if (!$stmt) {
+    http_response_code(500);
+    returnWithError("Database error");
+    exit();
+}
+
 $stmt->bind_param("ii", $inData["id"], $inData["userId"]);
 
 if ($stmt->execute() && $stmt->affected_rows > 0) {
+    http_response_code(200); 
     returnWithSuccess("Contact deleted successfully");
 } else {
+    http_response_code(404);
     returnWithError("Failed to delete contact or contact not found");
 }
 
